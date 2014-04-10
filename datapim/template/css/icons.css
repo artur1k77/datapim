@@ -1,0 +1,42 @@
+/*
+icons used or added from this site
+http://one-div.com
+*/
+
+.icon{}
+.icon:hover{
+	background:#353A3F;
+}
+
+.icon_facebook {
+position: relative;
+font-size: 20px;
+height: 2em;
+width: 2em;
+background: #2C2C2C;
+display: block;
+border-radius: 0.3em;
+}
+
+.icon_facebook::before {
+left: 0.85em;
+top: 0.7em;
+position: absolute;
+display: block;
+content: "";
+height: 0.3em;
+width: 0.85em;
+background: #EDEEE8;
+}
+.icon_facebook::after {
+left: 1.1em;
+top: 0.1em;
+position: absolute;
+display: block;
+content: "";
+height: 1.5em;
+width: 0.3em;
+border-radius: 0.4em 0 0 0;
+border: 0.3em solid #EDEEE8;
+border-right: 0;
+border-bottom: 0;

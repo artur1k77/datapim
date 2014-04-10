@@ -1,0 +1,61 @@
+AuthName "Underconstruction please wait untill we go live !" 
+AuthType Basic 
+AuthUserFile /var/www/vhosts/dota2essentials.com/httpdocs/.htpasswd 
+AuthGroupFile /dev/null 
+require valid-user
+
+DirectoryIndex index.html index.php
+
+# 1 YEAR
+<FilesMatch "\.(ico|pdf|flv)$">
+Header set Cache-Control "max-age=29030400, public"
+</FilesMatch>
+# 1 WEEK
+<FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+Header set Cache-Control "max-age=604800, no-revalidate"
+</FilesMatch>
+# 2 DAYS
+#<FilesMatch "\.(xml|txt|css|js)$">
+#Header set Cache-Control "max-age=172800, proxy-revalidate"
+#</FilesMatch>
+# 1 MIN
+#<FilesMatch "\.(html|htm|php)$">
+#Header set Cache-Control "max-age=60, private, proxy-revalidate"
+#</FilesMatch>
+
+
+# url rewrites
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	
+	# login script
+	RewriteRule ^login/(.*)$ /core/login/login.php [NC,QSA,L]
+	
+	# AJAX request handler
+	RewriteRule ^ajax/(.*)$ /core/ajax/ajax.php [NC,QSA,L]
+	
+	# page loader
+	# home page
+	RewriteRule ^(/)?$ http://www.dota2essentials.com/index.php?page=home [NC,QSA,L]
+	
+	# standaard page
+	RewriteRule ^([^/\.]+)/?$ http://www.dota2essentials.com/index.php?page=$1 [NC,QSA,L]
+	
+	# livestream page
+	RewriteRule ^livestream/([^/\.]+)/?$ http://www.dota2essentials.com/index.php?page=livestream&livestreamid=$1 [NC,QSA,L]
+	
+	# user profile pages
+	RewriteRule ^user/([^/\.]+)/?$ http://www.dota2essentials.com/index.php?page=users&steamid=$1 [NC,QSA,L]
+	
+	# make a trade page
+	RewriteRule ^make-a-trade/([^/\.]+)/?$ http://www.dota2essentials.com/index.php?page=make-a-trade&steamid=$1 [NC,QSA,L]
+	
+	# make a trade page
+	RewriteRule ^edit-trade/([^/\.]+)/?$ http://www.dota2essentials.com/index.php?page=edit-trade&tradeid=$1 [NC,QSA,L]
+	
+	# cosmetic detail pagina
+	RewriteRule ^item/([^/\.]+)/([^/\.]+)/?$ http://www.dota2essentials.com/index.php?page=item&defindex=$1 [NC,QSA,L]
+	
+	
+</IfModule>
+
